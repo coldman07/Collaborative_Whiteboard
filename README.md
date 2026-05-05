@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Collaborative Whiteboard
 
 Collaborative Whiteboard is a Spring Boot based real-time whiteboard for remote teams, classrooms, study groups, and brainstorming sessions. Users can create a board, share a join link, draw together on the same canvas, add text and sticky notes, chat during the session, save board state, and export the canvas.
@@ -617,8 +616,5 @@ Stop the running Spring Boot application before copying or deleting files in `da
 Stop the app, delete the `data/` folder, and start the app again. A fresh database will be created automatically.
 
 ## License
+# This project is intended for hackathon and educational use. Add or update the license according to your repository requirements.
 
-This project is intended for hackathon and educational use. Add or update the license according to your repository requirements.
-=======
-# Collaborative_Whiteboard
->>>>>>> 8012cc1249939b1db9a8add05c68fb77f2221058
