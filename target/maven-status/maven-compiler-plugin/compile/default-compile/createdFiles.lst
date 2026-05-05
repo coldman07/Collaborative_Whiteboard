@@ -1,0 +1,15 @@
+com\collabwhiteboard\model\ChatMessage.class
+com\collabwhiteboard\service\WhiteboardService$ElementRequest.class
+com\collabwhiteboard\web\SessionController$PermissionRequest.class
+com\collabwhiteboard\model\CanvasElement.class
+com\collabwhiteboard\web\WebSocketConfig.class
+com\collabwhiteboard\web\SessionController$CreateSessionRequest.class
+com\collabwhiteboard\repo\CanvasElementRepository.class
+com\collabwhiteboard\web\SessionController.class
+com\collabwhiteboard\web\SessionSocketHandler.class
+com\collabwhiteboard\service\WhiteboardService.class
+com\collabwhiteboard\CollaborativeWhiteboardApplication.class
+com\collabwhiteboard\service\WhiteboardService$Analytics.class
+com\collabwhiteboard\model\BoardSession.class
+com\collabwhiteboard\repo\ChatMessageRepository.class
+com\collabwhiteboard\repo\BoardSessionRepository.class

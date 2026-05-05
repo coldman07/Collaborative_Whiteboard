@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Collaborative Whiteboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="app-shell">
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-mark">CW</span>
+            <div>
+                <h1>Collaborative Whiteboard</h1>
+                <p id="sessionMeta">Create or join a live canvas</p>
+            </div>
+        </div>
+        <div class="session-actions">
+            <input id="sessionTitle" type="text" value="Design Sprint Board" aria-label="Session title">
+            <input id="displayName" type="text" placeholder="Your name" aria-label="Your name">
+            <button id="createSessionBtn">New</button>
+            <button id="joinSessionBtn">Join</button>
+            <button id="shareBtn">Share</button>
+        </div>
+    </header>
+
+    <main class="workspace">
+        <aside class="toolbar" aria-label="Whiteboard tools">
+            <button class="tool is-active" data-tool="pen" title="Pen">Pen</button>
+            <button class="tool" data-tool="highlighter" title="Highlighter">Hi</button>
+            <button class="tool" data-tool="eraser" title="Eraser">Erase</button>
+            <button class="tool" data-tool="line" title="Line">Line</button>
+            <button class="tool" data-tool="rect" title="Rectangle">Rect</button>
+            <button class="tool" data-tool="ellipse" title="Ellipse">Oval</button>
+            <button class="tool" data-tool="arrow" title="Arrow">Arrow</button>
+            <button class="tool" data-tool="text" title="Text box">Text</button>
+            <button class="tool" data-tool="note" title="Sticky note">Note</button>
+            <label class="control-label">
+                Color
+                <input id="colorPicker" type="color" value="#1f6feb">
+            </label>
+            <label class="control-label">
+                Width
+                <input id="widthPicker" type="range" min="2" max="32" value="5">
+            </label>
+            <div class="swatches">
+                <button data-color="#1f6feb" style="--swatch:#1f6feb" title="Blue"></button>
+                <button data-color="#24a148" style="--swatch:#24a148" title="Green"></button>
+                <button data-color="#f1c21b" style="--swatch:#f1c21b" title="Yellow"></button>
+                <button data-color="#da1e28" style="--swatch:#da1e28" title="Red"></button>
+                <button data-color="#111827" style="--swatch:#111827" title="Black"></button>
+            </div>
+            <button id="undoBtn" title="Undo last local action">Undo</button>
+            <button id="clearBtn" title="Clear board">Clear</button>
+            <button id="saveBtn" title="Save board">Save</button>
+            <button id="exportImageBtn" title="Export PNG">PNG</button>
+            <button id="exportPdfBtn" title="Export PDF">PDF</button>
+            <label class="lock-row" title="Moderator editing lock">
+                <input id="lockToggle" type="checkbox">
+                Lock
+            </label>
+        </aside>
+
+        <section class="canvas-stage">
+            <canvas id="boardCanvas"></canvas>
+            <div id="cursorLayer" class="cursor-layer" aria-hidden="true"></div>
+            <div id="emptyState" class="empty-state">
+                <strong>Start sketching together</strong>
+                <span>Use the tools on the left, then share the session link.</span>
+            </div>
+        </section>
+
+        <aside class="sidepanel">
+            <div class="status-grid">
+                <div>
+                    <span>Session</span>
+                    <strong id="sessionCode">none</strong>
+                </div>
+                <div>
+                    <span>Live</span>
+                    <strong id="liveCount">0</strong>
+                </div>
+                <div>
+                    <span>State</span>
+                    <strong id="connectionState">offline</strong>
+                </div>
+            </div>
+            <section class="chat-panel">
+                <h2>Chat</h2>
+                <div id="chatMessages" class="chat-messages"></div>
+                <form id="chatForm" class="chat-form">
+                    <input id="chatInput" type="text" placeholder="Message collaborators" autocomplete="off">
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+            <section class="comments-panel">
+                <h2>Activity</h2>
+                <div id="activityFeed" class="activity-feed"></div>
+            </section>
+        </aside>
+    </main>
+</div>
+
+<dialog id="joinDialog">
+    <form id="joinForm">
+        <h2>Join whiteboard</h2>
+        <label>
+            Session ID or token
+            <input id="joinCode" type="text" placeholder="Paste code or link">
+        </label>
+        <menu>
+            <button id="cancelJoinBtn" type="button">Cancel</button>
+            <button id="confirmJoinBtn" type="submit">Join</button>
+        </menu>
+    </form>
+</dialog>
+
+<dialog id="annotationDialog" class="annotation-dialog">
+    <form id="annotationForm">
+        <h2 id="annotationTitle">Add text</h2>
+        <label>
+            Content
+            <textarea id="annotationInput" rows="5" placeholder="Type your annotation"></textarea>
+        </label>
+        <menu>
+            <button id="cancelAnnotationBtn" type="button">Cancel</button>
+            <button id="confirmAnnotationBtn" type="submit">Add</button>
+        </menu>
+    </form>
+</dialog>
+
+<script src="/app.js"></script>
+</body>
+</html>
